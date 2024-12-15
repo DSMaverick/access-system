@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <title>Access Logs</title>
+  </head>
+  <body>
+    <div class="navbar">
+      <h1>Access Logs</h1>
+      <a href="{{ url_for('download', file_name='angajati.csv') }}" class="download-btn">Download CSV</a>
+      <a href="{{ url_for('download', file_name='angajati.xml') }}" class="download-btn">Download XML</a>
+    </div>
+
+    <table>
+      <tr>
+        <th>Full Name</th>
+        <th>Access Time</th>
+      </tr>
+      {% for log in angajati %}
+      <tr>
+        <td>{{ log.full_name }}</td>
+        <td>{{ log.access_time }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
